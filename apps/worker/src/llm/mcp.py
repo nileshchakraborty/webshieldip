@@ -92,6 +92,9 @@ class MCPClient:
         
         # 4. Safe Fallback
         if not success:
+            # Reset parsed to avoid returning invalid data from json.loads
+            parsed = {}
+            
             # Heuristic fallback: Return uncertain
             # We construct a valid object matching schema but with uncertain=True if possible
             fallback = {}

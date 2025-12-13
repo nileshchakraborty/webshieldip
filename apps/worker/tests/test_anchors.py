@@ -38,10 +38,9 @@ class TestAnchorPolicy(unittest.TestCase):
         allowed = check_rate_limits(4, now, [anchor], self.config) # Spacing 2 -> Allowed?
         # Logic: (4 - 2) = 2. If min_spacing is 2, this typically means "wait 2 questions".
         # If Q2 had anchor, Q3 skip, Q4 allowed.
-        self.assertFalse(allowed) # Wait, strictly: index diff >= min_spacing? 
+        self.assertTrue(allowed) # Wait, strictly: index diff >= min_spacing? 
         # (4-2)=2. >= 2. True.
         # Let's check my implementation logic: if (diff) < min_spacing. 
-        # 2 < 2 is False. So it returns True.
         # But wait, looking at my code: if (current - last) < min.
         # 2 < 2 is False. So it proceeds.
         # Wait, if min_spacing is 2.
