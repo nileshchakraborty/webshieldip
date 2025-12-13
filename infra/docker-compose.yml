@@ -1,0 +1,96 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: ../apps/api
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+      - DATABASE_URL=postgres://user:password@postgres:5432/webshield
+      - REDIS_URL=redis://redis:6379
+      - GRAPH_DB_URL=neo4j://neo4j:7687
+      - QDRANT_URL=http://vector-db:6333
+    depends_on:
+      - postgres
+      - redis
+      - vector-db
+      - graph-db
+    volumes:
+      - ../apps/api:/app
+      - /app/node_modules
+
+  worker:
+    build:
+      context: ../apps/worker
+      dockerfile: Dockerfile
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DATABASE_URL=postgresql://user:password@postgres:5432/webshield
+      - OLLAMA_BASE_URL=http://ollama:11434
+    depends_on:
+      - postgres
+      - ollama
+    volumes:
+      - ../apps/worker:/app
+
+  web:
+    build:
+      context: ../apps/web
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:3001
+    volumes:
+      - ../apps/web:/app
+      - /app/node_modules
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=webshield
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  vector-db:
+    image: qdrant/qdrant:latest
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+  graph-db:
+    image: neo4j:5.15
+    environment:
+      - NEO4J_AUTH=neo4j/password
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - neo4j_data:/data
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_data:
+  qdrant_data:
+  neo4j_data:
+  ollama_data:

@@ -1,0 +1,12 @@
+psycopg[binary]
+langchain
+langgraph
+pydantic
+qdrant-client
+neo4j
+requests
+pandas
+numpy
+ollama
+grpcio
+grpcio-tools

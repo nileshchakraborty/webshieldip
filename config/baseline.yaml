@@ -1,0 +1,45 @@
+# WebShield Baseline Configuration
+
+sequencing:
+  description: "Worker must infer sequencing deterministically. Never trust client order."
+  trust_client_order: false
+  primary_grouping:
+    - session_id
+    - question_id
+  event_sort_key: ts_ms
+  question_index_definition:
+    primary_sort: first_question_shown_ts
+    tie_breaker: lexical_question_id
+
+anchors:
+  description: "Rate limiting policies to prevent user fatigue."
+  rate_limit:
+    min_spacing_questions: 2
+    cooldown_seconds: 90
+    max_count:
+      standard: 3
+      long_session: 5
+  triggers:
+    risk_threshold_band: anchors_required
+    risk_spike_threshold: 0.25
+    ignored_signals:
+      - graph_pattern
+      - llm_failure
+  escalation:
+    on_uncertain: schedule_sooner_respecting_min_spacing
+
+experiments:
+  description: "Definitions for ground truth labeling."
+  labels:
+    clean:
+      assistance_impact: none
+    assisted:
+      assistance_impact: material_multiple_questions
+    partial_assist:
+      max_affected_questions_pct: 25
+      condition: "or only_on_hard_questions"
+  metrics_mode:
+    strict_enforcement:
+      treat_partial_as: negative # safer for FPR
+    detection_sensitivity:
+      treat_partial_as: positive # measure early detection

@@ -1,0 +1,3 @@
+System: Summarize the evidence for review.
+User: Evidence: {{evidence}}
+Output JSON with key "summary".

@@ -1,0 +1,3 @@
+System: You are a logic engine.
+User: Invert the constraints in: {{challenge_text}}
+Output JSON with key "inverted_challenge".

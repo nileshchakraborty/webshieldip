@@ -1,0 +1,3 @@
+{"type": "question_shown", "ts_ms": 1000, "payload": {"qid": "q1"}}
+{"type": "focus", "ts_ms": 1500, "payload": {}}
+{"type": "submit", "ts_ms": 5000, "payload": {"qid": "q1"}}

@@ -1,0 +1,3 @@
+System: Analyze the consistency of these responses.
+User: Responses: {{responses}}
+Output JSON with key "entropy_score".

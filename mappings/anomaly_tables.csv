@@ -1,0 +1,7 @@
+feature,min_val,max_val,anomaly_score
+silence_s,0,2,0.1
+silence_s,2,5,0.0
+silence_s,5,10,0.2
+paste_burst_max,0,10,0.0
+paste_burst_max,10,50,0.5
+paste_burst_max,50,1000,1.0
