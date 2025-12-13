@@ -1,0 +1,14 @@
+{"ts_ms":1000,"session_id":"S001","question_id":"Q1","event_type":"question_shown","payload":{"difficulty":"medium","expected_s":90}}
+{"ts_ms":7200,"session_id":"S001","question_id":"Q1","event_type":"first_input","payload":{"kind":"key"}}
+{"ts_ms":12000,"session_id":"S001","question_id":"Q1","event_type":"edit_snapshot","payload":{"text":"I will use a hashmap to track complements."}}
+{"ts_ms":45000,"session_id":"S001","question_id":"Q1","event_type":"edit_snapshot","payload":{"text":"Use hashmap: for each x, check target-x. If found return indices."}}
+{"ts_ms":94000,"session_id":"S001","question_id":"Q1","event_type":"submit","payload":{"final_text":"Use a hashmap mapping value to index. For each element x, check if target-x exists, then return the pair."}}
+
+{"ts_ms":110000,"session_id":"S001","question_id":"Q2","event_type":"question_shown","payload":{"difficulty":"hard","expected_s":160}}
+{"ts_ms":121400,"session_id":"S001","question_id":"Q2","event_type":"first_input","payload":{"kind":"key"}}
+{"ts_ms":140000,"session_id":"S001","question_id":"Q2","event_type":"edit_snapshot","payload":{"text":"Approach: binary search boundaries then compute count."}}
+{"ts_ms":220000,"session_id":"S001","question_id":"Q2","event_type":"edit_snapshot","payload":{"text":"Use lower_bound and upper_bound. If upper-lower > n/2 then majority."}}
+{"ts_ms":292000,"session_id":"S001","question_id":"Q2","event_type":"submit","payload":{"final_text":"Find left = lower_bound(target), right = upper_bound(target). If right-left > n/2 return true else false."}}
+
+{"ts_ms":300000,"session_id":"S001","question_id":"Q2","event_type":"anchor_shown","payload":{"type":"self_paraphrase","prompt":"In one sentence, restate your approach for Q2."}}
+{"ts_ms":302100,"session_id":"S001","question_id":"Q2","event_type":"anchor_response","payload":{"text":"I locate the first and last occurrence of the target with two binary searches and compare the count to n/2."}}

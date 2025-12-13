@@ -1,0 +1,4 @@
+session_id,final_risk,action,anchor_failures
+S001,0.3029,observe,0
+S101,1.0000,anchor_triggered,1
+S201,0.6604,observe,0

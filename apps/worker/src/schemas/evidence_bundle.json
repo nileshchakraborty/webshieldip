@@ -1,0 +1,74 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "WebShield Evidence Bundle",
+    "type": "object",
+    "required": [
+        "session_id",
+        "timestamp",
+        "risk_score",
+        "triggers",
+        "audit_trail"
+    ],
+    "properties": {
+        "session_id": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "timestamp": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "risk_score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+        },
+        "risk_band": {
+            "type": "string",
+            "enum": [
+                "trusted",
+                "observe",
+                "anchors_required",
+                "enforce"
+            ]
+        },
+        "triggers": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "evidence_snapshot": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "audit_trail": {
+            "type": "object",
+            "properties": {
+                "model_calls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "config_hash": {
+                    "type": "string"
+                },
+                "scoring_version": {
+                    "type": "string"
+                },
+                "completeness_proof": {
+                    "type": "string",
+                    "description": "Merkle root or signature of event stream"
+                }
+            }
+        }
+    }
+}

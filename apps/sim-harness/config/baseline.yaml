@@ -1,0 +1,19 @@
+decay: 0.90
+
+weights:
+  entropy: 0.35
+  temporal: 0.25
+  residual: 0.25
+  semantic: 0.20
+  focus: 0.10
+
+thresholds:
+  observe: 0.30
+  increase_sampling: 0.50
+  soft_clarification: 0.70
+  anchors_required: 0.75
+  enforce: 0.85
+
+enforcement:
+  min_anchor_failures: 2
+  min_questions_spanned: 2

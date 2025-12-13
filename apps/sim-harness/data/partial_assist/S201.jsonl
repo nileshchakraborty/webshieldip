@@ -1,0 +1,14 @@
+{"ts_ms":1000,"session_id":"S201","question_id":"Q1","event_type":"question_shown","payload":{"difficulty":"medium","expected_s":90}}
+{"ts_ms":6200,"session_id":"S201","question_id":"Q1","event_type":"first_input","payload":{"kind":"key"}}
+{"ts_ms":18000,"session_id":"S201","question_id":"Q1","event_type":"edit_snapshot","payload":{"text":"Maybe two pointers? Actually hashmap is easier."}}
+{"ts_ms":52000,"session_id":"S201","question_id":"Q1","event_type":"edit_snapshot","payload":{"text":"Use hashmap: check complement and store index."}}
+{"ts_ms":98000,"session_id":"S201","question_id":"Q1","event_type":"submit","payload":{"final_text":"Use hashmap mapping value to index. For each x, if target-x exists return indices."}}
+
+{"ts_ms":110000,"session_id":"S201","question_id":"Q2","event_type":"question_shown","payload":{"difficulty":"hard","expected_s":160}}
+{"ts_ms":130500,"session_id":"S201","question_id":"Q2","event_type":"first_input","payload":{"kind":"paste"}}
+{"ts_ms":130510,"session_id":"S201","question_id":"Q2","event_type":"paste","payload":{"chars":156}}
+{"ts_ms":131000,"session_id":"S201","question_id":"Q2","event_type":"edit_snapshot","payload":{"text":"Find lower bound and upper bound for target, compare count to n/2."}}
+{"ts_ms":142000,"session_id":"S201","question_id":"Q2","event_type":"submit","payload":{"final_text":"Compute left=lower_bound(target), right=upper_bound(target). If right-left > n/2 return true else false."}}
+
+{"ts_ms":150000,"session_id":"S201","question_id":"Q2","event_type":"anchor_shown","payload":{"type":"constraint_flip","prompt":"How does your method change if the array is not sorted?"}}
+{"ts_ms":154000,"session_id":"S201","question_id":"Q2","event_type":"anchor_response","payload":{"text":"If not sorted, binary search does not apply. I would count occurrences with a hashmap in O(n) and compare to n/2."}}

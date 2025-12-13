@@ -2,6 +2,7 @@ import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import postgres from '@fastify/postgres';
 import { ingestionRoutes } from './routes/ingestion';
+import { readRoutes } from './routes/read';
 
 const server = Fastify({
     logger: true
@@ -16,6 +17,7 @@ server.register(postgres, {
 
 // Routes
 server.register(ingestionRoutes, { prefix: '/v1' });
+server.register(readRoutes, { prefix: '/v1' });
 
 const start = async () => {
     try {

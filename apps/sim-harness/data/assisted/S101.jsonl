@@ -1,0 +1,14 @@
+{"ts_ms":1000,"session_id":"S101","question_id":"Q1","event_type":"question_shown","payload":{"difficulty":"medium","expected_s":90}}
+{"ts_ms":19500,"session_id":"S101","question_id":"Q1","event_type":"first_input","payload":{"kind":"paste"}}
+{"ts_ms":19510,"session_id":"S101","question_id":"Q1","event_type":"paste","payload":{"chars":142}}
+{"ts_ms":20000,"session_id":"S101","question_id":"Q1","event_type":"edit_snapshot","payload":{"text":"Use a hashmap to store seen values. For each element, check if complement exists and return indices."}}
+{"ts_ms":27000,"session_id":"S101","question_id":"Q1","event_type":"submit","payload":{"final_text":"Use a hashmap to store seen values. For each element, check if complement exists and return indices."}}
+
+{"ts_ms":110000,"session_id":"S101","question_id":"Q2","event_type":"question_shown","payload":{"difficulty":"hard","expected_s":160}}
+{"ts_ms":131200,"session_id":"S101","question_id":"Q2","event_type":"first_input","payload":{"kind":"paste"}}
+{"ts_ms":131210,"session_id":"S101","question_id":"Q2","event_type":"paste","payload":{"chars":164}}
+{"ts_ms":132000,"session_id":"S101","question_id":"Q2","event_type":"edit_snapshot","payload":{"text":"Compute left and right bounds with binary search. Compare count to n/2. Return true if majority."}}
+{"ts_ms":141000,"session_id":"S101","question_id":"Q2","event_type":"submit","payload":{"final_text":"Compute left and right bounds with binary search. Compare count to n/2. Return true if majority."}}
+
+{"ts_ms":145000,"session_id":"S101","question_id":"Q2","event_type":"anchor_shown","payload":{"type":"self_paraphrase","prompt":"In one sentence, restate your approach for Q2."}}
+{"ts_ms":154400,"session_id":"S101","question_id":"Q2","event_type":"anchor_response","payload":{"text":"I use binary search to solve it efficiently."}}
