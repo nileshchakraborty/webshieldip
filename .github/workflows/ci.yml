@@ -1,0 +1,67 @@
+name: WebShield CI
+
+on:
+    push:
+        branches: ["main"]
+    pull_request:
+        branches: ["main"]
+
+jobs:
+    build-and-test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Use Node.js 20
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "20"
+                  cache: "npm"
+
+            - name: Use Python 3.11
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "3.11"
+                  cache: "pip"
+
+            - name: Install Node Dependencies
+              run: npm install
+
+            - name: Build Shared Package
+              run: npm run build --workspace=@webshield/shared
+
+            - name: Build API
+              run: npm run build --workspace=webshield-api
+
+            - name: Build Web
+              run: npm run build --workspace=webshield-web
+
+            - name: Create .env
+              run: cp .env.example .env
+
+            - name: Build Docker Stack
+              run: |
+                  cd infra
+                  docker compose build
+
+            - name: Start Docker Stack
+              run: |
+                  cd infra
+                  docker compose up -d
+                  echo "Waiting for services to stabilize..."
+                  sleep 30
+
+            - name: Check Container Status
+              run: docker ps -a
+
+            - name: Run E2E Test
+              run: |
+                  pip install requests
+                  python apps/sim/src/test_e2e.py
+
+            - name: Docker Logs (on failure)
+              if: failure()
+              run: |
+                  cd infra
+                  docker compose logs
